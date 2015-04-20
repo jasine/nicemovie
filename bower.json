@@ -8,7 +8,8 @@
     "normalize.css": "~3.0.1",
     "jquery": "~1.11.1",
     "bootstrap": "~3.3.4",
-    "responsejs": "~0.9.1"
+    "responsejs": "~0.9.1",
+    "bootstrap-datepicker": "~1.4.0"
   },
   "devDependencies": {}
 }

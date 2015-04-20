@@ -1,0 +1,53 @@
+extends ./layouts/base-front
+block append css
+	style.
+		.title-link:hover {
+			text-decoration:none;
+			color:#5A5A5A;
+		}
+		.title-link {
+			text-decoration:none;
+			color:#5A5A5A;
+		}
+
+block content
+	mixin featurette(movies)
+		-var index=0;
+		each movie in movies
+			if(index%2==0)
+				+fea-left(movie)
+			else
+				+fea-right(movie)
+			hr.featurette-divider
+			-index++
+
+	mixin fea-left(movie)
+		a(href="##{movie._id}").title-link
+			.row.featurette(id='#{movie._id}')
+				.col-md-7
+					h1.featurette-heading
+						| #{movie._title}
+						span.text-muted   
+					h2.text-muted #{movie._date}
+					h3.text-muted #{movie._directer} #{movie._country}  
+					p.lead
+						| #{movie._desp}
+				.col-md-5
+					.center
+						img.featurette-image.img-responsive(src='#{movie._img}')
+	mixin fea-right(movie)
+		a(href="##{movie._id}").title-link
+			.row.featurette(id='#{movie._id}')
+				.col-md-5
+					img.featurette-image.img-responsive(src='#{movie._img}')
+				.col-md-7
+					h1.featurette-heading
+						| #{movie._title}
+						span.text-muted 
+					h2.text-muted #{movie._date}
+					h3.text-muted #{movie._directer} #{movie._country}  
+					p.lead
+						| #{movie._desp}
+	.container.container-top
+		+featurette(movies)
+		

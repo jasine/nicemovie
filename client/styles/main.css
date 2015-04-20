@@ -21,55 +21,56 @@
 
 
 
-/* Box sizing styles: Apply a natural box layout model to all elements */
 
-.navbar-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 20;
-    }
-
-    /* Flip around the padding for proper display in narrow viewports */
-    .navbar-wrapper .container {
-      padding-left: 0;
-      padding-right: 0;
-    }
-    .navbar-wrapper .navbar {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
 /* GLOBAL STYLES
     -------------------------------------------------- */
     /* Padding below the footer and lighter body text */
 
     body {
-      padding-bottom: 20px;
+      padding-bottom: 70px;
+      padding-top: 50px;
       color: #5a5a5a;
     }
 
+    a:hover{
+      text-decoration:none;
+    }
+
+    .container-top {
+      padding-top: 70px;
+    }
+
+    .center {
+      width: auto;
+      display: table;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
 
     /* Special class on .container surrounding .navbar, used for positioning it into place. */
-    .navbar-wrapper {
+    /*.navbar-wrapper {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         z-index: 20;
+        background-color: #222222;
     }
 
-    /* Flip around the padding for proper display in narrow viewports */
+     Flip around the padding for proper display in narrow viewports 
     .navbar-wrapper .container {
       padding-left: 0;
       padding-right: 0;
+
     }
     .navbar-wrapper .navbar {
       padding-left: 15px;
       padding-right: 15px;
-    }
+    }*/
 
 
     /* CUSTOMIZE THE CAROUSEL
@@ -77,7 +78,7 @@
 
     /* Carousel base class */
     .carousel {
-        height: 700px;
+        height: 640px;
         margin-bottom: 60px;
     }
     
@@ -93,7 +94,7 @@
 
     /* Declare heights because of positioning of img element */
     .carousel .item {
-        height: 700px;
+        height: 640px;
         background-color: #777;
     }
     .carousel-inner > .item > img {
@@ -101,10 +102,13 @@
         top: 0;
         left: 0;
         min-width: 100%;
-        height: 700px;
+        height: 640px;
 
     }
 
+    .navbar-fixed-top-bg {
+        background-color: #333;
+    }
 
 
     /* MARKETING CONTENT
@@ -197,8 +201,30 @@
       .featurette-heading {
         font-size: 50px;
       }
+  }
+
+    @media (max-width: 800px) {
+      .carousel {
+        height: 320px;
+        margin-bottom: 60px;
+      }
+    
+   
+    /* Declare heights because of positioning of img element */
+    .carousel .item {
+        height: 320px;
+        background-color: #777;
+    }
+    .carousel-inner > .item > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        height: 320px;
 
     }
+    }
+
 
     @media (min-width: 992px) {
       .featurette-heading {

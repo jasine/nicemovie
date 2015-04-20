@@ -63,6 +63,10 @@ var expressConfig = function(app, express, db) {
   // Setup log level for server console output
   app.use(logger(settings.server.logLevel));
 
+  app.locals.moment=require('moment');
+
+
+
   if (env === 'development') {
 
     // Disable caching for easier testing

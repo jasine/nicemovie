@@ -11,7 +11,6 @@ var taskConfig = function(grunt) {
         cwd: '<%= yeogurt.client %>/',
         dest: '<%= yeogurt.dist %>/client/',
         src: [
-          'styles/fonts/**/*.{woff,otf,ttf,eot,svg}',
           'images/**/*.{webp}',
           '!*.js',
           '*.{ico,png,txt}'
@@ -25,11 +24,19 @@ var taskConfig = function(grunt) {
           'server.js',
           'package.json'
         ]
+      },
+      {
+        expand: true,
+        cwd: '<%= yeogurt.client %>/',
+        dest: '<%= yeogurt.dist %>/client/fonts',
+        flatten: true,//汇总
+        src: [
+          '**/*.{woff,otf,ttf,eot,svg,woff2}' 
+        ]
       }]
     }
   });
 
 };
-
 
 module.exports = taskConfig;
