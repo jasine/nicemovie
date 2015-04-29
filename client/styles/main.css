@@ -61,7 +61,7 @@
         background-color: #222222;
     }
 
-     Flip around the padding for proper display in narrow viewports 
+     Flip around the padding for proper display in narrow viewports
     .navbar-wrapper .container {
       padding-left: 0;
       padding-right: 0;
@@ -81,7 +81,7 @@
         height: 640px;
         margin-bottom: 60px;
     }
-    
+
     /*.carousel.img {
       height: 700px;
       width: auto;
@@ -148,7 +148,7 @@
         line-height: 1;
         letter-spacing: -1px;
     }
-  
+
     .footer {
       margin-top: 30px;
 
@@ -203,26 +203,70 @@
       }
   }
 
-    @media (max-width: 800px) {
-      .carousel {
-        height: 320px;
-        margin-bottom: 60px;
-      }
-    
-   
-    /* Declare heights because of positioning of img element */
-    .carousel .item {
-        height: 320px;
-        background-color: #777;
-    }
-    .carousel-inner > .item > img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        min-width: 100%;
-        height: 320px;
+@media (max-width: 900px) {
+  .carousel {
+    height: 420px;
+    margin-bottom: 60px;
+  }
 
+  /* Declare heights because of positioning of img element */
+  .carousel .item {
+    height: 420px;
+    background-color: #777;
+  }
+
+  .carousel-inner > .item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 420px;
+
+  }
     }
+
+@media (max-width: 720px) {
+  .carousel {
+    height: 320px;
+    margin-bottom: 60px;
+  }
+
+  /* Declare heights because of positioning of img element */
+  .carousel .item {
+    height: 320px;
+    background-color: #777;
+  }
+
+  .carousel-inner > .item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 320px;
+
+  }
+    }
+
+@media (max-width: 640px) {
+  .carousel {
+    height: 250px;
+    margin-bottom: 60px;
+  }
+
+  /* Declare heights because of positioning of img element */
+  .carousel .item {
+    height: 250px;
+    background-color: #777;
+  }
+
+  .carousel-inner > .item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 250px;
+
+  }
     }
 
 

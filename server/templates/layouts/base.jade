@@ -9,6 +9,8 @@ head
   meta(name='viewport', content='width=device-width, initial-scale=1.0')
   meta(name='csrf-token', content='_csrf')
 
+
+
   block css
     if (env == 'development')
       // build:css(client) styles/global.css
@@ -19,7 +21,7 @@ head
       link(rel='stylesheet', href='/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css')
       // endbower
       // endbuild
-  
+
       // build:css(client) styles/main.css
       // [injector:css]
       // [endinjector]
@@ -45,7 +47,7 @@ head
   // endbuild
 body
 
-  
+
 
   <!--[if lte IE 7]>
   <p class='browsehappy'>You are using an <strong>outdated</strong> browser. Please <a href='http://browsehappy.com/''>upgrade your browser</a> to improve your experience.</p>
@@ -54,7 +56,7 @@ body
 
   block layout
     block content
-  
+
 
   if (env == 'development')
     // build:js(client) scripts/global.js

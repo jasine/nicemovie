@@ -1,208 +1,217 @@
 extends ./layouts/base
 
 block append css
-	style.
-		/*
-		* Base structure
-		*/
+  style.
+    /*
+        * Base structure
+        */
 
-		/*
-		* Global add-ons
-		*/
+    /*
+        * Global add-ons
+        */
 
-		.sub-header {
-			padding-bottom: 10px;
-			border-bottom: 1px solid #eee;
-		}
+    .sub-header {
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
 
-		/*
-		* Sidebar
-		*/
-		/* Hide for mobile, show later */
-		.sidebar {
-			display: none;
-		}
-		@media (min-width: 768px) {
-			.sidebar {
-				position: fixed;
-				top: 51px;
-				bottom: 0;
-				left: 0;
-				z-index: 1000;
-				display: block;
-				padding: 20px;
-				overflow-x: hidden;
-				overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-				background-color: #f5f5f5;
-				border-right: 1px solid #eee;
-			}
-		}
+    /*
+        * Sidebar
+        */
+    /* Hide for mobile, show later */
+    .sidebar {
+      display: none;
+    }
 
-		/* Sidebar navigation */
-		.nav-sidebar {
-			margin-right: -21px; /* 20px padding + 1px border */
-			margin-bottom: 20px;
-			margin-left: -20px;
-		}
-		.nav-sidebar > li > a {
-			padding-right: 20px;
-			padding-left: 20px;
-		}
-		.nav-sidebar > .active > a {
-			color: #fff;
-			background-color: #428bca;
-		}
+    @media (min-width: 768px) {
+      .sidebar {
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        background-color: #f5f5f5;
+        border-right: 1px solid #eee;
+      }
+    }
 
+    /* Sidebar navigation */
+    .nav-sidebar {
+      margin-right: -21px; /* 20px padding + 1px border */
+      margin-bottom: 20px;
+      margin-left: -20px;
+    }
 
-		/*
-		* Main content
-		*/
+    .nav-sidebar > li > a {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
 
-		.main {
-			padding: 20px;
-		}
-		@media (min-width: 768px) {
-			.main {
-				padding-right: 40px;
-				padding-left: 40px;
-			}
-		}
-		.main .page-header {
-			margin-top: 0;
-		}
-		/*
-		* Placeholder dashboard ideas
-		*/
-		.placeholders {
-			margin-bottom: 30px;
-			text-align: center;
-		}
-		.placeholders h4 {
-			margin-bottom: 0;
-		}
-		.placeholder {
-			margin-bottom: 20px;
-		}
-		.placeholder img {
-			display: inline-block;
-			border-radius: 50%;
-		}
+    .nav-sidebar > .active > a {
+      color: #fff;
+      background-color: #428bca;
+    }
+
+    /*
+        * Main content
+        */
+
+    .main {
+      padding: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .main {
+        padding-right: 40px;
+        padding-left: 40px;
+      }
+    }
+
+    .main .page-header {
+      margin-top: 0;
+    }
+
+    /*
+        * Placeholder dashboard ideas
+        */
+    .placeholders {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .placeholders h4 {
+      margin-bottom: 0;
+    }
+
+    .placeholder {
+      margin-bottom: 20px;
+    }
+
+    .placeholder img {
+      display: inline-block;
+      border-radius: 50%;
+    }
 
 block content
-	nav.navbar.navbar-inverse.navbar-fixed-top
-		.container-fluid
-			.navbar-header
-				button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-					span.sr-only Toggle navigation
-					span.icon-bar
-					span.icon-bar
-					span.icon-bar
-				a.navbar-brand(href='#') 好电影-后台管理
-			.navbar-collapse.collapse
-				ul.nav.navbar-nav.navbar-right
-					li
-						a(href='#') 控制台
-					li
-						a(href='#') 设置
-					li
-						a(href='#') 信息
-	.container-fluid
-		.row
-			.col-sm-3.col-md-2.sidebar
-				ul.nav.nav-sidebar
-					li.active
-						a(href='#') 
-							| 电影列表
-							span.sr-only (current)
-					li
-						a(href='#') Reports
-					li
-						a(href='#') Analytics
-					li
-						a(href='#') Export
-				ul.nav.nav-sidebar
-					li
-						a(href='') Nav item
-					li
-						a(href='') Nav item again
-					li
-						a(href='') One more nav
-					li
-						a(href='') Another nav item
-					li
-						a(href='') More navigation
-				ul.nav.nav-sidebar
-					li
-						a(href='') Nav item again
-					li
-						a(href='') One more nav
-					li
-						a(href='') Another nav item
-			.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
-				h1.page-header #{title}
-				.panel.panel-info
-					.panel-heading
-						a(role='button',href="#",data-toggle='modal',onClick="onAddNew()",data-target="#add_new").btn-sm.btn-success 添加
-					.panel-body
-						.table-responsive
-							table#movie_list.table.table-striped.table-condensed
-								thead
-									tr
-										th 影片名
-										th 导演
-										th 国家
-										th 上映日期
-										th 编辑
-										th 删除
-								tbody
-									each m in movies
-										tr
-											td #{m._title}
-											td #{m._directer}
-											td #{m._country}
-											td #{m._date}
-											td
-												a(role="button",href='#',data-toggle="modal" data-target="#add_new",onClick="update_panel('#{m._id}',this)").btn-sm.btn-info 编辑
-											td
-												a(role="button",href='#',onClick="del_movie('#{m._id}',this)").btn-sm.btn-danger 删除
-				//-add new panel
-				#add_new.modal.in.fade(role='dialog',aria-labelledby='add new' aria-hidden='true')
-					.modal-dialog
-						.modal-content
-							.modal-header
-								a.close(data-dismiss='modal') x
-								h4#op-title 添加电影
-							form#add_form.form-horizontal
-								.modal-body
-									input#mv-id(type="hidden",name='movie[_id]')
-									.form-group
-										label.col-sm-2.control-label(for='mv-title') 电影名
-										.col-sm-10
-											input#mv-title.form-control(type='text',name='movie[_title]',placeholder="五十度灰什么的")
-									.form-group
-										label.col-sm-2.control-label(for='mv-directer') 导演
-										.col-sm-10
-											input#mv-directer.form-control(type='text',name='movie[_directer]',placeholder="各种导各种潜规则")
-									.form-group
-										label.col-sm-2.control-label(for='mv-country') 国家
-										.col-sm-10
-											input#mv-country.form-control(type='text',name='movie[_country]',placeholder="好莱坞宝莱坞都不如横店")
-									.form-group
-										label.col-sm-2.control-label(for='mv-date') 上映日期
-										.col-sm-10
-											input#mv-date.form-control(type='input',name='movie[_date]',data-provide='datepicker',data-date-format="yyyy/mm/dd",placeholder="时间就像海绵里的水")
-									.form-group
-										label.col-sm-2.control-label(for='mv-img') 图片
-										.col-sm-10
-											input#mv-img.form-control(type='text',name='movie[_img]',placeholder="无图无真相")
-									.form-group
-										label.col-sm-2.control-label(for='mv-summary') 总结
-										.col-sm-10
-											input#mv-summary.form-control(type='text',name='movie[_summary]',placeholder="别说废话")
-									.form-group
-										label.col-sm-2.control-label(for='mv-desp') 简介
-										.col-sm-10
-											textarea#mv-desp.form-control(rows='4',name='movie[_desp]',placeholder="多多少少写一点")
-								.modal-footer
-									button(type="submit",data-toggle="modal" data-target="#add_new").btn.btn-success 保存
-									button(type="button",data-dismiss='modal').btn.btn-primary 取消
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    .container-fluid
+      .navbar-header
+        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href='#') 好电影-后台管理
+      .navbar-collapse.collapse
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href='#') 控制台
+          li
+            a(href='#') 设置
+          li
+            a(href='#') 信息
+
+.container-fluid
+  .row
+    .col-sm-3.col-md-2.sidebar
+      ul.nav.nav-sidebar
+        li.active
+          a(href='#')
+            | 电影列表
+            span.sr-only (current)
+          li
+            a(href='#') Reports
+          li
+            a(href='#') Analytics
+          li
+            a(href='#') Export
+          ul.nav.nav-sidebar
+            li
+              a(href='') Nav item
+            li
+              a(href='') Nav item again
+            li
+              a(href='') One more nav
+            li
+              a(href='') Another nav item
+            li
+              a(href='') More navigation
+          ul.nav.nav-sidebar
+            li
+              a(href='') Nav item again
+            li
+              a(href='') One more nav
+            li
+              a(href='') Another nav item
+          .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+            h1.page-header #{title}
+            .panel.panel-info
+              .panel-heading
+                a(role='button',href="#",data-toggle='modal',onClick="onAddNew()",data-target="#add_new").btn-sm.btn-success 添加
+              .panel-body
+                .table-responsive
+                  table#movie_list.table.table-striped.table-condensed
+                    thead
+                      tr
+                        th 影片名
+                        th 导演
+                        th 国家
+                        th 上映日期
+                        th 编辑
+                        th 删除
+                    tbody
+                      each m in movies
+                        tr
+                          td #{m._title}
+                          td #{m._directer}
+                          td #{m._country}
+                          td #{m._date}
+                          td
+                            a(role="button",href='#',data-toggle="modal" data-target="#add_new",onClick="update_panel('#{m._id}',this)").btn-sm.btn-info 编辑
+                          td
+                            a(role="button",href='#',onClick="del_movie('#{m._id}',this)").btn-sm.btn-danger 删除
+            //-add new panel
+            #add_new.modal.in.fade(role='dialog',aria-labelledby='add new' aria-hidden='true')
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    a.close(data-dismiss='modal') x
+                    h4#op-title 添加电影
+                  form#add_form.form-horizontal
+                    .modal-body
+                      input#mv-id(type="hidden",name='movie[_id]')
+                      .form-group
+                        label.col-sm-2.control-label(for='mv-title') 电影名
+                        .col-sm-10
+                          input#mv-title.form-control(type='text',name='movie[_title]',placeholder="五十度灰什么的")
+                      .form-group
+                        label.col-sm-2.control-label(for='mv-directer') 导演
+                        .col-sm-10
+                          input#mv-directer.form-control(type='text',name='movie[_directer]',placeholder="各种导各种潜规则")
+                      .form-group
+                        label.col-sm-2.control-label(for='mv-country') 国家
+                        .col-sm-10
+                          input#mv-country.form-control(type='text',name='movie[_country]',placeholder="好莱坞宝莱坞都不如横店")
+                      .form-group
+                        label.col-sm-2.control-label(for='mv-date') 上映日期
+                        .col-sm-10
+                          input#mv-date.form-control(type='input',name='movie[_date]',data-provide='datepicker',data-date-format="yyyy/mm/dd",placeholder="时间就像海绵里的水")
+                      .form-group
+                        label.col-sm-2.control-label(for='mv-img') 图片
+                        .col-sm-10
+                          input#mv-img.form-control(type='text',name='movie[_img]',placeholder="无图无真相")
+                      .form-group
+                        label.col-sm-2.control-label(for='mv-summary') 总结
+                        .col-sm-10
+                          input#mv-summary.form-control(type='text',name='movie[_summary]',placeholder="别说废话")
+                      .form-group
+                        label.col-sm-2.control-label(for='mv-desp') 简介
+                        .col-sm-10
+                          textarea#mv-desp.form-control(rows='4',name='movie[_desp]',placeholder="多多少少写一点")
+                    .modal-footer
+                      button(type="submit",data-toggle="modal" data-target="#add_new").btn.btn-success 保存
+                      button(type="button",data-dismiss='modal').btn.btn-primary 取消

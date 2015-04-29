@@ -6,13 +6,10 @@
 
 var indexController = require('../controllers/index');
 var listController= require('../controllers/list');
+var adminController = require('../controllers/admin');
+var loginController = require('../controllers/login');
 
 
-var adminController=require('../controllers/admin')
-
-var getMovieController= require('../controllers/getMovie');
-var postMovieController=require('../controllers/postMovie')
-var deleteMovieController=require('../controllers/deleteMovie')
 
 
 
@@ -39,11 +36,14 @@ var routes = function(app) {
   //Admin
   app.get('/admin',adminController.admin);
 
-  app.get('/admin/movie/:id',getMovieController.getMovie);
-  app.post('/admin/movie/',postMovieController.postMovie);
-  app.delete('/admin/movie/:id',deleteMovieController.deleteMovie);
+  app.get('/admin/movie/:id', adminController.getMovie);
+  app.post('/admin/movie/', adminController.postMovie);
+  app.delete('/admin/movie/:id', adminController.deleteMovie);
 
-
+  //Login
+  //app.get('/admin/movie')
+  app.get('/admin/login/', loginController.get);
+  app.post('/admin/login/', loginController.post);
 };
 
 module.exports = routes;
