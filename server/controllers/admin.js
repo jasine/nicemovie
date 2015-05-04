@@ -13,9 +13,9 @@ var adminController = function (req, res) {
 				title:"好电影-管理",
 				movies:movies,
 				env: process.env.NODE_ENV || 'development'
-			})
+			});
 		}
-  })
+  });
 };
 
 
@@ -28,9 +28,9 @@ var getMovieController = function (req, res) {
         res.json({result: err});
       }
       else {
-        res.json({movie: movie})
+        res.json({movie: movie});
       }
-    })
+    });
   }
   else {
     res.json({result: 'error:id do not exist'});
@@ -54,8 +54,8 @@ var postMovieController = function (req, res) {
         }
         res.json({result: 'ok', _id: movie._id});
         //-res.json()
-      })
-    })
+      });
+    });
   }
   else {
     _movie = new Movie({
@@ -86,10 +86,10 @@ var deleteMovieController = function (req, res) {
         console.log(err);
       }
       else {
-        res.json({result: 'ok'})
+        res.json({result: 'ok'});
 
       }
-    })
+    });
   }
   else {
     res.json({result: 'error'});
