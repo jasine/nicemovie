@@ -14,10 +14,10 @@ var indexController = function(req, res) {
 				title:"好电影",
 				movies:movies,
 				env: process.env.NODE_ENV || 'development'
-			})
+			});
 		}
 	});		
-}
+};
 module.exports = {
   index: indexController
 };

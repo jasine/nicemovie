@@ -1,3 +1,5 @@
+/// <reference path="../../typings/node/node.d.ts"/>
+/// <reference path="../../typings/express/express.d.ts""/>
 /**
  * Express configuration
  */
@@ -12,11 +14,22 @@ var path = require('path');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
 
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+
+
+
 // Configuration files
 var settings = require('./env/default');
 var security = require('./security');
 
+
+
 var expressConfig = function(app, express, db) {
+ 
+  //connect-mongo做session的持久化，初始化需要传入express，只能在这里引入 
+
+
 
   var hour = 3600000;
   var day = hour * 24;
@@ -59,6 +72,12 @@ var expressConfig = function(app, express, db) {
 
   // Returns middleware that parses cookies
   app.use(cookieParser());
+
+  app.use(session({
+    secret:'movie',
+    store: new MongoStore({url:settings.database.url})
+    //store: new MongoStore({mongooseConnection: db.connections[0] })
+  }));
 
   // Setup log level for server console output
   app.use(logger(settings.server.logLevel));

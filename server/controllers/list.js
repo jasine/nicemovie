@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 var Movie=require('../models/movie');
 var listController=function (req,res) {	
 	Movie.fetch(function(err,movies){
@@ -10,11 +10,11 @@ var listController=function (req,res) {
 				title:"电影列表",
 				movies:movies,
 				env: process.env.NODE_ENV || 'development'
-			})
+			});
 		}
 	});		
-}
+};
 
 module.exports ={
 	list:listController
-}
+};

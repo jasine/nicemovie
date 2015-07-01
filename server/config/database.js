@@ -18,13 +18,13 @@ var databaseConfig = function(app) {
   var env = app.get('env');
 
   // Connect to database
-  mongoose.connect(settings.database.url, settings.database.options);
+  db=mongoose.connect(settings.database.url, settings.database.options);
 
   if ('development' === env) {
     // Log database actions
     mongoose.set('debug', true);
   }
-
+  
   return db;
 };
 

@@ -1,12 +1,14 @@
+/// <reference path="../../typings/mongoose/mongoose.d.ts" />
+/// <reference path="../../typings/bcrypt/bcrypt.d.ts" />
 var mongoose = require('mongoose');
-var MovieSchema = new mongoose.Schema({
-  _title: String,
-  _directer: String,
-  _country: String,
-  _desp: String,
-  _date: String,
-  _img: String,
-  _summary: String,
+var bcrypt=require('bcrypt');
+var UserSchema=new mongoose.Schema({
+  mail:{
+    unique:true,
+    type:String
+  },
+  name:String,
+  password:String,
   _meta: {
     _createAt: {
       type: Date,
@@ -19,36 +21,60 @@ var MovieSchema = new mongoose.Schema({
   }
 });
 
+
 //数据每次更新都调用
-MovieSchema.pre('save', function (next) {
+UserSchema.pre('save', function (next) {
+  var user=this;
   if (this.isNew) {
     this._meta._createAt = this._meta._updateAt = Date.now();
   }
   else {
     this._meta._updateAt = Date.now();
   }
-  next();
+  bcrypt.genSalt(10,function (err,salt) {
+    if(err) return next(err);
+    
+    bcrypt.hash(user.password,salt,function (err,hash) {
+      if(err) return next(err);
+      user.password=hash;
+      next();
+    });
+  });
+
+
 });
 
-MovieSchema.statics = {
+//静态方法
+UserSchema.statics = {
   fetch: function (cb) {
     return this
       .find({})
-      .sort({'_meta._updateAt': 'desc'})
-      .exec(cb)
+      //.sort({'_meta._updateAt': 'desc'})
+      .exec(cb);
   },
   findById: function (_id, cb) {
     return this
       .findOne({_id: _id})
-      .exec(cb)
+      .exec(cb);
   },
   fetchTop: function (cb) {
     return this
       .find({})
       .limit(3)
       .sort({'_meta._updateAt': 'desc'})
-      .exec(cb)
+      .exec(cb);
+  },
+};
+
+//实例方法
+UserSchema.methods={
+  comparePassword:function (password,cb) {
+    bcrypt.compare(password,this.password,function (err,isMatch) {
+      if(err) 
+        return cb(err);
+      cb(null,isMatch);     
+    });
   }
 };
 
-module.exports = MovieSchema;
+module.exports = UserSchema;

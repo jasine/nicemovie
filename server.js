@@ -6,9 +6,10 @@
 // Module dependencies.
 var express = require('express');
 var mongoose = require('mongoose');
-
 // Add coloring for console output
 require('colors');
+
+
 
 // Create Express server.
 var app = express();
