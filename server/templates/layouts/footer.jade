@@ -1,10 +1,77 @@
 // FOOTER
-.container
-  footer.footer
-    p.pull-right
-      a(href="#") Back to top
-    p
-      | © 2015 JSN, Inc. ·
-      a(href="#") Privacy
-      | ·
-      a(href="#") Te
+append css
+  style.
+    .to-top{
+      margin-right:20px;
+      font-size:1.2em;
+      z-index:100;
+    }
+    #back-to-top{  
+      position:fixed;  
+      display:none;  
+      bottom:165px;  
+      right:16px;  
+    }
+    footer{
+      background-color:#222222;
+    }
+    .info{
+      padding-top:6px;
+      padding-bottom:6px;
+      text-align:center;
+    }
+    .info a{
+      color:#005FA6;
+    }
+    .icons{
+      margin-left:5px;
+    }
+ 
+.to-top.btn.btn-default#back-to-top
+  i.glyphicon.glyphicon-menu-up
+footer.section.section-primary
+  .container
+    .row
+      .col-sm-6
+        h2 你想要的电影
+        p 电影是艺术，但不仅仅是艺术，电影是艺术中的瑰宝
+        p 看一场好电影就像一场有意义的旅行
+      
+      .col-sm-4
+        p.text-info.text-right
+          h2 联系我们
+        .row.icons
+          .col-md-12.hidden-lg.hidden-md.hidden-sm.text-left
+            a(href='#')
+              i.fa.fa-3x.fa-fw.fa-weixin.text-inverse
+            a(href='#')
+              i.fa.fa-3x.fa-fw.fa-weibo.text-inverse
+            a(href='#')
+              i.fa.fa-3x.fa-fw.fa-envelope-o.text-inverse
+            //-a(href='#')
+              i.fa.fa-3x.fa-fw.fa-github.text-inverse
+        .row.icons
+          .col-md-12.hidden-xs.text-left
+            a(href='#')
+              i.fa.fa-3x.fa-fw.fa-weixin.text-inverse
+            a(href='#')
+              i.fa.fa-3x.fa-fw.fa-weibo.text-inverse
+            a(href='#')
+              i.fa.fa-3x.fa-fw.fa-envelope-o.text-inverse
+            //-a(href='#')
+              i.fa.fa-3x.fa-fw.fa-github.text-inverse
+      .col-sm-2.col-md-2
+        img.img-responsive.img-thumbnail(src='/images/ewm.png', alt="二维码",style='width:90px;height:90px;margin-top:20px;margin-left:auto;margin-right:auto;')
+
+    .row.info    
+      span
+        a(href="#",style='color:#555555') 
+          small 京-备630871号 
+      span ·
+      span  
+        a(href="#",style='color:#555555') 
+          small 隐私政策
+      span ·
+      span 
+        a(href='#',style='color:#555555')
+          small  © 2015 JSN, Inc.

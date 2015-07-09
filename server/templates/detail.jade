@@ -1,0 +1,419 @@
+extends ./layouts/base-front
+append css
+  style.
+    /*body {background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAxMC8yOS8xMiKqq3kAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAABHklEQVRIib2Vyw6EIAxFW5idr///Qx9sfG3pLEyJ3tAwi5EmBqRo7vHawiEEERHS6x7MTMxMVv6+z3tPMUYSkfTM/R0fEaG2bbMv+Gc4nZzn+dN4HAcREa3r+hi3bcuu68jLskhVIlW073tWaYlQ9+F9IpqmSfq+fwskhdO/AwmUTJXrOuaRQNeRkOd5lq7rXmS5InmERKoER/QMvUAPlZDHcZRhGN4CSeGY+aHMqgcks5RrHv/eeh455x5KrMq2yHQdibDO6ncG/KZWL7M8xDyS1/MIO0NJqdULLS81X6/X6aR0nqBSJcPeZnlZrzN477NKURn2Nus8sjzmEII0TfMiyxUuxphVWjpJkbx0btUnshRihVv70Bv8ItXq6Asoi/ZiCbU6YgAAAABJRU5ErkJggg==);}*/
+    /*.art-title{color:#231f20; font-size:25px; font-weight:700;}
+    .artist-data{width:100%; padding-bottom: 20px;}
+    .artst-pic{width:100%;position: relative;}
+    .artst-pic span a{color: #fff; font-size: 16px; display: none;}
+    .artst-pic span.artst-like{position: absolute; left: 11%; bottom: 10px;}
+    .artst-pic span.artst-share{position: absolute; left:46%; bottom: 10px;}
+    .artst-pic span.artst-plus{position: absolute; right: 9%; bottom: 10px;}
+    .artst-prfle{width:63%;}
+    .artst-prfle span.artst-sub{font-size:15px; color:#bbb; float:left; width:100%; font-weight:normal; padding:5px 0;}
+    .artst-prfle span.artst-sub span.byname{font-weight:700; color:#aaa;}
+    .artst-prfle span.artst-sub span.daysago{float:right; font-size:12px;}*/
+    .counter-tab{float: left; width: 100%; padding-top: 10px;margin-left:25px;padding-bottom:30px;}
+    .counter-tab div{float: left; width: 33%; color: #aaa; font-size: 18px;}
+    .bot-links{float: left; width: 100%; padding-top: 10px;padding-bottom:10px;}
+    .bot-links a{display: inline-block; padding: 5px; background: #ccc; font-size: 12px; margin-bottom: 5px;margin-right:5px; color: #9c9c9c; text-decoration:none;}
+    /*span.play-icon{position: absolute; left: 31%; top: 32%; display: none;}
+    .artst-pic:hover img.play-icon, .artst-pic:hover span a{display: block; } */
+    .movie h1{font-size:2.5em;}
+    .movie h2{font-size:1.6em;}
+    .movie h3{font-size:1.2em;}
+    
+    .comment-list{
+      font-size:14px;
+    }
+    .comment-list .row {
+      margin-bottom: 0px;
+    }
+    .comment-list .panel .panel-heading {
+      padding: 4px 15px;
+      position: absolute;
+      border:none;
+      /*Panel-heading border radius*/
+      border-top-right-radius:0px;
+      top: 1px;
+    }
+    .comment-list .panel .panel-heading.right {
+      border-right-width: 0px;
+      /*Panel-heading border radius*/
+      border-top-left-radius:0px;
+      right: 16px;
+    }
+    .comment-list .panel .panel-heading .panel-body {
+      padding-top: 6px;
+    }
+    .comment-list figcaption {
+      /*For wrapping text in thumbnail*/
+      word-wrap: break-word;
+    }
+    .comment-list .comment-post {
+      margin-top: 6px;
+    }
+
+    .widget-area {
+    
+    
+    }
+    .status-upload {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    /*-webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+    -ms-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+    -o-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);*/
+    float: left;
+    width: 100%;
+    }
+    .status-upload form {
+    float: left;
+    width: 100%;
+    }
+    .status-upload form textarea {
+    background: none repeat scroll 0 0 #fff;
+    border: medium none;
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    -ms-border-radius: 4px 4px 0 0;
+    -o-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    color: #777777;
+    float: left;
+    font-family: Lato;
+    font-size: 14px;
+    height: 142px;
+    letter-spacing: 0.3px;
+    padding: 20px;
+    width: 100%;
+    resize:vertical;
+    outline:none;
+    border: 1px solid #F2F2F2;
+    }
+    
+    .status-upload ul {
+    float: left;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0 0 0 15px;
+    width: auto;
+    }
+    .status-upload ul > li {
+    float: left;
+    }
+    .status-upload ul > li > a {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    color: #777777;
+    float: left;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px 0 10px 10px;
+    text-align: center;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    width: 30px;
+    cursor: pointer;
+    }
+    .status-upload ul > li > a:hover {
+    background: none repeat scroll 0 0 #606060;
+    color: #fff;
+    }
+    .status-upload form button {
+    border: medium none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    color: #fff;
+    float: right;
+    font-family: Lato;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    margin-right: 9px;
+    margin-top: 9px;
+    padding: 6px 15px;
+    }
+    .dropdown > a > span.green:before {
+    border-left-color: #2dcb73;
+    }
+    .status-upload form button > i {
+    margin-right: 7px;
+    }
+    .arrow .panel-body{
+      padding-bottom:0px;
+    }
+    .thumbnail-left{
+      max-width:100px;
+      max-height:100px;
+      margin-left:auto;
+      margin-right:0;
+    }
+
+    .thumbnail-right{
+      max-width:100px;
+      max-height:100px;
+      margin-left:0;
+      margin-right:auto;
+    }
+
+    @media (min-width: 768px) {
+      body{
+        padding-top:90px;
+      }
+      .movie h1{font-size:3.8em;}
+      .movie h2{font-size:2.2em;}
+      .movie h3{font-size:1.8em;}
+
+      .comment-list .arrow:after, .comment-list .arrow:before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: transparent;
+      }
+      .comment-list .panel.arrow.left:after, .comment-list .panel.arrow.left:before {
+        border-left: 0;
+      }
+      /*****Left Arrow*****/
+      /*Outline effect style*/
+      .comment-list .panel.arrow.left:before {
+        left: 0px;
+        top: 30px;
+        /*Use boarder color of panel*/
+        border-right-color: inherit;
+        border-width: 16px;
+      }
+      /*Background color effect*/
+      .comment-list .panel.arrow.left:after {
+        left: 1px;
+        top: 31px;
+        /*Change for different outline color*/
+        border-right-color: #FFFFFF;
+        border-width: 15px;
+      }
+      /*****Right Arrow*****/
+      /*Outline effect style*/
+      .comment-list .panel.arrow.right:before {
+        right: -16px;
+        top: 30px;
+        /*Use boarder color of panel*/
+        border-left-color: inherit;
+        border-width: 16px;
+      }
+      /*Background color effect*/
+      .comment-list .panel.arrow.right:after {
+        right: -14px;
+        top: 31px;
+        /*Change for different outline color*/
+        border-left-color: #FFFFFF;
+        border-width: 15px;
+      }
+    }
+
+    /* 中等屏幕（桌面显示器，大于等于 992px） */
+    @media (min-width: @screen-md-min) { }
+    
+    /* 大屏幕（大桌面显示器，大于等于 1200px） */
+    @media (min-width: @screen-lg-min) { }
+append scripts
+  script.
+    $(function(){
+      $(".comment").click(function(){
+        var target=$(this);
+        var toId=target.data('tid');
+        var cId=target.data('cid');
+        $('#rep_tid').attr({type:'hidden',
+            name:'comment[tid]',
+            value:toId});
+        $('#rep_cid').attr({type:'hidden',
+            name:'comment[cid]',
+            value:cId});
+        $('#comment_area').attr('placeholder','回复:'+target.data('usert'));
+
+        //锚点动画
+        $("html,body").animate({scrollTop: $('#comments').offset().top}, 1000);
+        $("#comment_area").focus();
+      });
+
+      $('.time').each(function(){$(this).text($.formatDateTime(' h:ii:ss  yy/mm/dd',new Date($(this).text()) ))})
+    })
+
+block content
+  .container
+    .row.movie
+      .row.featurette(id='#{movie._id}')
+        .col-md-5
+          //- .artst-pic.pull-left
+          //-   span.artst-like
+          //-     a(href='#')
+          //-       i.glyphicon.glyphicon-heart-empty
+          //-   span.artst-share
+          //-     a(href='#')
+          //-       i.glyphicon.glyphicon-share
+          //-   span.artst-plus
+          //-     a(href='#')
+          //-       i.glyphicon.glyphicon-plus-sign
+          //-   a(href='#')
+              img.featurette-image.img-responsive(src='#{movie._img}')
+          img.featurette-image.img-responsive(src='#{movie._img}')
+            
+        .col-md-7
+          h1
+            | #{movie._title}
+            span.text-muted
+          h3.text-muted #{movie._date}
+          h2.text-muted #{movie._directer} #{movie._country}
+          .bot-links
+            a(href='#') 剧情
+            a(href='#') 科幻
+            a(href='#') 好莱坞
+            a(href='#') 美国
+            a(href='#') 蝙蝠侠
+            a(href='#') 经典
+          p.lead
+            | #{movie._desp}
+          .counter-tab
+              .counter_comnt
+                i.glyphicon.glyphicon-comment
+                |  359
+              .counter_ply
+                i.glyphicon.glyphicon-eye-open
+                |  1312
+              .counter_like
+                a(href='#',style='color:red')
+                  i.glyphicon.glyphicon-heart
+                span   2256
+    .row
+        .col-md-offset-1.col-md-10
+          .row
+            h2.page-header 评论          
+            section.comment-list
+              each comment in comments
+                article.row
+                  .col-md-2.col-sm-2.hidden-xs
+                    figure.thumbnail-left
+                      img.img-responsive(src='/images/h1.jpg')
+                      //- figcaption.text-center #{comment.from.name}
+                  .col-md-10.col-sm-10
+                    .panel.panel-default.arrow.left
+                      .panel-body
+                        header.text-left
+                          .comment-user
+                            i.fa.fa-user
+                            |  #{comment.from.name}
+                          time.comment-date(datetime='16-12-2014 01:05')
+                            i.fa.fa-clock-o
+                            span.time  #{comment._meta._createAt}
+                        .comment-post
+                          p #{comment.content}
+                        p.text-right
+                          a.comment.btn.btn-default.btn-sm(data-usert='#{comment.from.name}',data-cid='#{comment._id}',data-tid='#{comment.from._id}')
+                            i.fa.fa-reply
+                            |  回复
+                if comment.reply && comment.reply.length>0
+                  each rep in comment.reply
+                    article.row
+                      if rep.from.name==comment.from.name
+                        .col-md-2.col-sm-2.col-md-offset-1.col-sm-offset-1.hidden-xs
+                          figure.thumbnail-left
+                            img.img-responsive(src='http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg')
+                            //- figcaption.text-center #{comment.from.name}
+                        .col-md-9.col-sm-9
+                          .panel.panel-default.arrow.left
+                            .panel-heading.right  
+                                 span.small() 回复
+                                 span &nbsp#{rep.to.name}
+                            .panel-body
+                              header.text-left
+                                .comment-user
+                                  i.fa.fa-user
+                                  |  #{rep.from.name}
+                                time.comment-date(datetime='#{rep.time}')
+                                  i.fa.fa-clock-o
+                                  span.time  #{rep.time}
+                              .comment-post
+                                p #{rep.content}
+                              p.text-right
+                                a.comment.btn.btn-default.btn-sm(data-usert='#{rep.from.name}',data-cid='#{comment._id}',data-tid='#{rep.from._id}')
+                                  i.fa.fa-reply
+                                  |  回复
+                      else
+                        .col-md-9.col-sm-9.col-md-offset-1.col-md-pull-0.col-sm-offset-1
+                          .panel.panel-default.arrow.right
+                            .panel-heading 
+                                span.small() 回复
+                                 span &nbsp#{rep.to.name}
+                            .panel-body
+                              header.text-right
+                                .comment-user
+                                  i.fa.fa-user
+                                  |  #{rep.from.name}
+                                time.comment-date(datetime='#{rep.time}')
+                                  i.fa.fa-clock-o
+                                  span.time  #{rep.time}
+                              .comment-post
+                                p
+                                  | #{rep.content}
+                              p.text-right
+                                a.comment.btn.btn-default.btn-sm(data-usert='#{rep.from.name}',data-cid='#{comment._id}',data-tid='#{rep.from._id}')
+                                  i.fa.fa-reply
+                                  |  回复
+                        .col-md-2.col-sm-2.col-md-pull-0.hidden-xs
+                          figure.thumbnail-right
+                            img.img-responsive(src='http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg')
+          .row(style='margin-bottom:15px')
+            hr.article-hr
+            if user
+              section.comment-list
+                article.row
+                  .col-md-2.col-sm-2.hidden-xs
+                    figure.thumbnail-left
+                      img.img-responsive(src='/images/h1.jpg')
+                      //- figcaption.text-center #{comment.from.name}
+                  .col-md-10.col-sm-10
+                    .panel.panel-default.arrow.left
+                      .panel-body
+                        .widget-area.no-padding.blank#comments
+                          .status-upload
+                            form(id='CommentForm' method='POST' action='/detail/comment')
+                              input(type='hidden',name='comment[movie]',value='#{movie._id}')
+                              input#rep_tid(type='hidden',name='comment[tid]')
+                              input#rep_cid(type='hidden',name='comment[cid]')
+                              input(type='hidden',name='comment[from]',value='#{user._id}')
+                              textarea#comment_area(name='comment[content]',rows="6",placeholder="谈谈你的看法...")
+                              ul
+                                li
+                                  a(title='', data-toggle='tooltip', data-placement='bottom', data-original-title='Audio')
+                                    i.fa.fa-music
+                                li
+                                  a(title='', data-toggle='tooltip', data-placement='bottom', data-original-title='Video')
+                                    i.fa.fa-video-camera
+                                li
+                                  a(title='', data-toggle='tooltip', data-placement='bottom', data-original-title='Sound Record')
+                                    i.fa.fa-microphone
+                                li
+                                  a(title='', data-toggle='tooltip', data-placement='bottom', data-original-title='Picture')
+                                    i.fa.fa-picture-o
+                              button.btn.btn-success.pull-right(type='submit', style='margin-right:20px;') 
+                                i.fa.fa-share
+                                | &nbsp;发表评论                           
+            else
+              .alert.alert-info(role='alert') 
+                span 评论请
+                a(href="/account/login",style='font-weight:bold') 登录

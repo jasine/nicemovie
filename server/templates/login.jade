@@ -72,6 +72,8 @@ block content
               label.checkbox
                 input(name='remerber',type="checkbox", value="true")
                 | 记住我
+          if referer
+            input(type='hidden',name='referer',value='#{referer}')
           .form-group
             button.btn.btn-lg.btn-primary.btn-block(type="submit") 登录
     .row

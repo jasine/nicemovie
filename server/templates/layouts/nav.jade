@@ -1,3 +1,10 @@
+append css
+  style.
+    @media (min-width: 768px) {
+      .account-info{
+        text-align:center;font-size:16px
+      }
+    }
 //-Navbar
 nav.navbar.navbar-inverse.navbar-fixed-top
   .container
@@ -25,11 +32,11 @@ nav.navbar.navbar-inverse.navbar-fixed-top
               //span.glyphicon.glyphicon-chevron-down
             ul.dropdown-menu(role='menu')
               li
-                a(href="/admin",style='text-align:center;font-size:16px') 后  台
+                a.account-info(href="/admin") 后  台
               li.divider
               li
                 //.navbar-login.navbar-login-session
-                a(href='/account/logout',style='color:red;text-align:center;font-size:16px') 退  出
+                a.account-info(href='/account/logout',style='color:red;') 退  出
       else
         ul.nav.navbar-right.navbar-nav
           li

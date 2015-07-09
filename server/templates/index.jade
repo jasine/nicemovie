@@ -15,7 +15,7 @@ block content
 					p
 						| #{item._summary}
 					p
-						a.btn.btn-large.btn-success(href="/list##{item._id}", role="button") 我要去看
+						a.btn.btn-large.btn-success(href="/detail/#{item._id}", role="button") 我要去看
 
 
 	#myCarousel.carousel.slide(data-ride="carousel")
@@ -44,6 +44,6 @@ block content
 					p
 						| #{item._summary}
 					p
-						a.btn.btn-default(href="/list##{item._id}", role="button") 查看详情 »
+						a.btn.btn-default(href="/detail/#{item._id}", role="button") 查看详情 »
 
 		

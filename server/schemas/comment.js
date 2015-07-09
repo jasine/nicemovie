@@ -1,13 +1,37 @@
-'use strict';
+/// <reference path="../../typings/mongoose/mongoose.d.ts" />
 var mongoose=require('mongoose');
-var MovieSchema=new mongoose.Schema({
-	_title:String,
-	_directer:String,
-	_country:String,
-	_desp:String,
-	_date:String,
-	_img:String,
-	_summary:String,
+var Schema=mongoose.Schema;
+var ObjectId=Schema.Types;
+var CommentSchema=new mongoose.Schema({
+	movie:{
+		type:ObjectId,
+		ref:'Movie'
+	},
+	from:{
+		type:ObjectId,
+		ref:'User'
+	},
+	to:{
+		type:ObjectId,
+		ref:'User'
+	},
+	content:String,
+	reply:[{
+		from:{
+			type:ObjectId,
+			ref:"User"
+		},
+		to:{
+			type:ObjectId,
+			ref:"User"
+		},
+		content:String,
+		time:{
+			type:Date,
+			default:Date.now()
+		}
+	  }
+	],
 	_meta:{
 		_createAt:{
 			type:Date,
@@ -21,7 +45,7 @@ var MovieSchema=new mongoose.Schema({
 });
 
 //数据每次更新都调用
-MovieSchema.pre('save',function(next){
+CommentSchema.pre('save',function(next){
 	if(this.isNew){
 		this._meta._createAt=this._meta._updateAt=Date.now();
 	}
@@ -31,7 +55,7 @@ MovieSchema.pre('save',function(next){
 	next();
 });
 
-MovieSchema.statics={
+CommentSchema.statics={
 	fetch:function(cb){
 		return this
 		.find({})
@@ -52,4 +76,4 @@ MovieSchema.statics={
 	}
 };
 
-module.exports=MovieSchema;
+module.exports=CommentSchema;

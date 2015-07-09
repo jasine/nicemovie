@@ -6,11 +6,18 @@
  "user strict";
 var User=require('../models/user')
 
+//登陆
 var loginGetController = function (req, res) {
+
+  var referer=req.headers['referer'];
+  if(referer&&referer.indexOf('/account/signup', this.length - '/account/signup'.length) !== -1){
+    referer=undefined;
+  }
   res.render('login', {
     title: "登陆",  
     message:"",
     visibility:'hidden',
+    referer:referer,
     env: process.env.NODE_ENV || 'development'
   });
 };
@@ -32,7 +39,11 @@ var loginPostController = function (req, res) {
                 //如果不点remeberme,cookier过期时间为1小时
                 req.session.cookie.expires=new Date(Date.now() + 60* 60 * 1000);
               }
-              res.redirect('/admin/');
+              if(req.body.referer){
+                res.redirect(req.body.referer);
+              }else{
+                res.redirect('/admin/');
+              }
             }
             else{
               res.render('login', {
@@ -103,7 +114,7 @@ var signupPostController = function (req, res) {
 var logoutController=function (req,res) {
   delete req.session.user;
   delete res.locals.user;
-  res.redirect('/');
+  res.redirect(req.headers['referer']);
 };
 
 module.exports = {
