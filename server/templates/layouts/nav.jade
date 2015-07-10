@@ -44,9 +44,9 @@ nav.navbar.navbar-inverse.navbar-fixed-top
           li
             a(href='/account/login') 登陆
       ul.nav.navbar-nav.navbar-right
-        form.navbar-form.navbar-right
+        form#searchbox.navbar-form.navbar-right(action='/search',method='get')
           .input-group
-            input.form-control(type='text', placeholder='速度与激情',aria-describedby="sizing-addon2")
-            a.input-group-addon.btn
+            input.form-control(name='keywords',type='text', placeholder='速度与激情',aria-describedby="sizing-addon2")
+            a.input-group-addon.btn(onClick='$("#searchbox").submit()')
               span.glyphicon.glyphicon-search(aria-hidden="true")
 

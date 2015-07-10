@@ -11,6 +11,7 @@ var listController= require('../controllers/list');
 var adminController = require('../controllers/admin');
 var detailController=require('../controllers/detail')
 var aboutController=require('../controllers/about');
+var searchController=require('../controllers/search');
 
 var accountController = require('../controllers/account');
 var commentController=require('../controllers/comment');
@@ -72,6 +73,10 @@ var routes = function(app) {
   app.get('/account/signup/', accountController.signupGet);
   app.post('/account/signup/', accountController.signupPost);
   
+  //search
+  app.get('/search',searchController.search);
+  
+  //others
   app.get('/notfound',otherController.notFound);
   app.get('/error',otherController.error);
   

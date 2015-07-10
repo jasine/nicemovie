@@ -1,5 +1,8 @@
+/// <reference path="../../typings/mongoose/mongoose.d.ts" />
 'use strict';
 var mongoose=require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
+
 var MovieSchema=new mongoose.Schema({
 	_title:String,
 	_directer:String,
@@ -51,5 +54,8 @@ MovieSchema.statics={
 		.exec(cb);
 	}
 };
+
+//添加分页插件
+MovieSchema.plugin(mongoosePaginate);
 
 module.exports=MovieSchema;
