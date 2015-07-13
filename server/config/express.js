@@ -139,7 +139,7 @@ var expressConfig = function(app, express, db) {
   // Production Error Handler.
   app.use(function(err, req, res, next) {
 
-    var error = err.error || err;
+    //var error = err.error || err;
     var message = err.message;
     var status = err.status || 500;
 
