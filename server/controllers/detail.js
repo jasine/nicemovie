@@ -16,8 +16,8 @@ var getDetailController=function (req,res) {
         }else {
             Comment
             .find({movie: id})
-            .populate('from', 'name')
-            .populate('reply.from reply.to', 'name')
+            .populate('from', 'name head')
+            .populate('reply.from reply.to', 'name head')
             .sort({'_meta._createAt':'asc'})
             .exec(function(err, comments) {
                 res.render('detail', {

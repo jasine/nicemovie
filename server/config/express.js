@@ -17,6 +17,9 @@ var errorHandler = require('errorhandler');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
+//处理文件上传中间件
+var multer  = require('multer')
+
 
 
 // Configuration files
@@ -78,6 +81,9 @@ var expressConfig = function(app, express, db) {
     store: new MongoStore({url:settings.database.url})
     //store: new MongoStore({mongooseConnection: db.connections[0] })
   }));
+  
+  //要定期清理缓存文件夹
+  app.use(multer({ dest: './client/uploads/cache'}))
 
   // Setup log level for server console output
   app.use(logger(settings.server.logLevel));

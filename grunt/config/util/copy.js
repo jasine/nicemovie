@@ -33,7 +33,16 @@ var taskConfig = function(grunt) {
         src: [
           '**/*.{woff,otf,ttf,eot,svg,woff2}' 
         ]
-      }]
+      },
+      {
+        expand: true,
+        cwd: '<%= yeogurt.client %>/uploads/',
+        dest: '<%= yeogurt.dist %>/client/uploads/',
+        src: [
+          '**/*.*' 
+        ]
+      }
+      ]
     }
   });
 

@@ -101,8 +101,12 @@ block append scripts
               $('#mv-directer').val(data.directors[0].name);
               $('#mv-country').val(data.countries[0]);
               $('#mv-date').val(data.year);
-              $('#mv-img').val(data.images.large);
+              $('#mv-webimg').val(data.images.large);
               $('#mv-desp').val(data.summary);
+              $('#mv-img').fileinput('refresh', {initialPreview: [
+                  '<img src="'+data.images.large+'" class="file-preview-image" alt="poster" title="Desert">'
+              ]
+              });
             }
           })
         }
@@ -195,7 +199,7 @@ block content
               .modal-header
                 a.close(data-dismiss='modal') x
                 h4#op-title 添加电影               
-              form#add_form.form-horizontal
+              form#add_form.form-horizontal(enctype='multipart/form-data')
                 .modal-body
                   input#mv-id(type="hidden",name='movie[_id]')
                   .form-group
@@ -226,7 +230,8 @@ block content
                   .form-group
                     label.col-sm-2.control-label(for='mv-img') 图片
                     .col-sm-10
-                      input#mv-img.form-control(type='text',name='movie[_img]',placeholder="无图无真相")
+                      input#mv-img.form-control(type='file',name='uploadposter',data-preview-file-type="text",placeholder="无图无真相")
+                      input#mv-webimg(type="hidden",name='webimg')
                   .form-group
                     label.col-sm-2.control-label(for='mv-summary') 总结
                     .col-sm-10

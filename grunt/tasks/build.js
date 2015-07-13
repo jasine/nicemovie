@@ -7,6 +7,7 @@
 var taskConfig = function(grunt) {
   grunt.registerTask('build', 'Build a production ready version of your site.', [
     'clean:dist',
+    'clean:cache',//清理上传的缓存文件夹
     'env:prod',
     'injector',
     'wiredep',

@@ -58,6 +58,29 @@ function backToTop(params) {
 	adjustFooter();
 	showCurrentPage();
 	backToTop();
+	
+	$('#mv-img').fileinput({
+		showUpload:false, 
+		previewFileType:'any',
+		browseLabel: '浏览...', 'removeLabel': '删除',
+		initialPreviewShowDelete:false,
+		allowedFileTypes:['image'],
+		maxFileCount:1,
+		msgInvalidFileType:'只能上传图片文件',
+		msgSelected:'当前图片'
+	});
+	
+	$('#mv-head').fileinput({
+		showUpload:false, 
+		previewFileType:'any',
+		browseLabel: '上传头像.', 'removeLabel': '删除',
+		initialPreviewShowDelete:false,
+		allowedFileTypes:['image'],
+		maxFileCount:1,
+		msgInvalidFileType:'只能上传图片文件',
+		msgSelected:'当前图片',
+		//browseClass:'upload'
+	});
 })();
 
 
@@ -66,11 +89,19 @@ function backToTop(params) {
 var updating_row;
 
 $('#add_form').submit(function () {
+	var data = new FormData(document.getElementById('add_form'));
+	jQuery.each(jQuery('#mv-img')[0].files, function (i, file) {
+		data.append('uploadPoster' + i, file);
+	});
 	$.ajax(
 		{
 			type: 'POST',
 			url: '/admin/movie',
-			data: $(this).serialize(),
+			//data: $(this).serialize(),
+			data: data,
+			cache: false,
+			contentType: false,
+			processData: false,
 			success: function (back) {
 				if (back.result === 'ok') {
 					if ($('#mv-id').val() !== '') {
@@ -113,6 +144,7 @@ function del_movie(id, a) {
 
 function update_panel(id, a) {
 	$('#op-title').text('编辑电影');
+	$('#search-db').empty();
 	$.ajax({
 		type: 'GET',
 		url: '/admin/movie/' + id,
@@ -123,7 +155,20 @@ function update_panel(id, a) {
 			$('#mv-country').val(data.movie._country);
 			//$('#mv-date').datepicker('setDate', new Date(data.movie._date));
 			$('#mv-date').val(data.movie._date);
-			$('#mv-img').val(data.movie._img);
+			$('#mv-img').fileinput('refresh', {initialPreview: [
+			    '<img src="'+data.movie._img+'" class="file-preview-image" alt="poster" title="Desert">'
+			]
+			// initialPreviewConfig: [{
+			//         caption: '海报',
+			//         //width: '120px',
+			//         //url: '/localhost/avatar/delete',
+			//         // key: 100,
+			//         // extra: {id: 100}
+			//     }			    
+			// ],
+			});
+
+			//$('#mv-img').val(data.movie._img);
 			$('#mv-summary').val(data.movie._summary);
 			$('#mv-desp').val(data.movie._desp);
 			updating_row = $(a).parent().parent();

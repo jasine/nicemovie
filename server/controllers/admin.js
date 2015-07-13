@@ -48,7 +48,15 @@ var postMovieController = function(req, res) {
     var id = req.body.movie._id;
     var movieObj = req.body.movie;
     var _movie;
-    if (id !== '') {
+    if(req._img){
+        movieObj._img=req._img;//有上传文件数据
+    }else{
+        if(req.body.webimg){
+            movieObj._img=req.body.webimg;//有上传文件数据
+        }
+    }
+    
+    if (id) {
         Movie.findById(id, function(err, movie) {
             if (err) {
                 console.log(err);

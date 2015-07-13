@@ -6,7 +6,8 @@ var taskConfig = function(grunt) {
 
   grunt.config.set('clean', {
     dist: ['<%= yeogurt.dist %>'],
-    tmp: ['<%= yeogurt.tmp %>']
+    tmp: ['<%= yeogurt.tmp %>'],
+    cache:['<%= yeogurt.client %>/uploads/cache/*']
   });
 
 };

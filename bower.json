@@ -11,7 +11,8 @@
     "responsejs": "~0.9.1",
     "bootstrap-datepicker": "~1.4.0",
     "font-awesome": "~4.3.0",
-    "jquery.formatDateTime": "~1.1.6"
+    "jquery.formatDateTime": "~1.1.6",
+    "bootstrap-fileinput": "~4.2.3"
   },
   "devDependencies": {}
 }

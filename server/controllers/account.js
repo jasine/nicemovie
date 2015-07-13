@@ -4,7 +4,7 @@
  * Created by jasine on 15/4/28.
  */
  "user strict";
-var User=require('../models/user')
+var User=require('../models/user');
 
 //登陆
 var loginGetController = function (req, res) {
@@ -79,7 +79,6 @@ var singnupGetController = function (req, res) {
 };
 
 var signupPostController = function (req, res) {
-  console.log(req.body);
 
   User.findOne({mail:req.body.user.mail},function (err,user) {
     if(err){
@@ -94,6 +93,11 @@ var signupPostController = function (req, res) {
     }
     else{
       var newUser=new User(req.body.user);
+      if(req._img){
+        newUser.head=req._img;
+      }else{
+        newUser.head='default.jpg';
+      }       
       newUser.save(function (err,newUser) {
       if(err)
       console.log(err);   

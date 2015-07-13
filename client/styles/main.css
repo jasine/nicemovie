@@ -163,6 +163,19 @@ a:hover {
 .info{
     padding-bottom: 0px;
 }
+
+
+/*fileupload loading动画文件路*/
+.loading {
+    background: transparent url('../images/loading.gif') no-repeat scroll center center content-box !important;
+}
+.file-loading {
+    background: transparent url('../images/loading.gif') top left no-repeat;
+}
+.file-uploading {
+    background-image: url('../images/loading-sm.gif');
+}
+
 /* RESPONSIVE CSS
     -------------------------------------------------- */
 

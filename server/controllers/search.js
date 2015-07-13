@@ -35,20 +35,7 @@ var searchController = function (req, res) {
 			title: "搜索",
 			env: process.env.NODE_ENV || 'development'
 		});
-	}
-	
-	// Movie.fetch(function(err,movies){
-	// 	if(err){
-	// 		console.log(err);
-	// 	}
-	// 	else{
-	// 		res.render('search',{
-	// 			title:"搜索",
-	// 			movies:movies,
-	// 			env: process.env.NODE_ENV || 'development'
-	// 		});
-	// 	}
-	// });	
+	}	
 	
 };
 

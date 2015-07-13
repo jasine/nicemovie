@@ -21,6 +21,8 @@ var otherController=require('../controllers/other');
 //filters
 var accountFilter = require('../filters/account');
 
+//file operations
+var fileController=require('../controllers/file');
 
 var path = require('path');
 var fs = require('fs');
@@ -57,7 +59,7 @@ var routes = function(app) {
   app.get('/admin',accountFilter.authorize,adminController.admin);
 
   app.get('/admin/movie/:id',accountFilter.authorize, adminController.getMovie);
-  app.post('/admin/movie/', accountFilter.authorize,adminController.postMovie);
+  app.post('/admin/movie/', accountFilter.authorize,fileController.savePoster, adminController.postMovie);//添加保存海报中间件
   app.delete('/admin/movie/:id',accountFilter.authorize, adminController.deleteMovie);
 
   app.post('/detail/comment',accountFilter.authorize,commentController.addComment);
@@ -71,7 +73,7 @@ var routes = function(app) {
   
    //Signup
   app.get('/account/signup/', accountController.signupGet);
-  app.post('/account/signup/', accountController.signupPost);
+  app.post('/account/signup/', fileController.saveHead,accountController.signupPost);
   
   //search
   app.get('/search',searchController.search);

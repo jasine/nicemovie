@@ -16,7 +16,12 @@ var taskConfig = function(grunt) {
           title:'好电影',
           user:'testuser',
           movie:'testmovie',
-          comment:{reply:[]},
+          comments:{},
+          results:{},
+          keywords:"keywords",
+          page:1,
+          pageCount:1,
+          itemCount:2
         }
       },
       expand: true,

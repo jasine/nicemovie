@@ -308,7 +308,7 @@ block content
                 article.row
                   .col-md-2.col-sm-2.hidden-xs
                     figure.thumbnail-left
-                      img.img-responsive(src='/images/h1.jpg')
+                      img.img-responsive(src='/uploads/heads/#{comment.from.head}')
                       //- figcaption.text-center #{comment.from.name}
                   .col-md-10.col-sm-10
                     .panel.panel-default.arrow.left
@@ -332,7 +332,7 @@ block content
                       if rep.from.name==comment.from.name
                         .col-md-2.col-sm-2.col-md-offset-1.col-sm-offset-1.hidden-xs
                           figure.thumbnail-left
-                            img.img-responsive(src='http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg')
+                            img.img-responsive(src='/uploads/heads/#{rep.from.head}')
                             //- figcaption.text-center #{comment.from.name}
                         .col-md-9.col-sm-9
                           .panel.panel-default.arrow.left
@@ -376,7 +376,7 @@ block content
                                   |  回复
                         .col-md-2.col-sm-2.col-md-pull-0.hidden-xs
                           figure.thumbnail-right
-                            img.img-responsive(src='http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg')
+                            img.img-responsive(src='/uploads/heads/#{rep.from.head}')
           .row(style='margin-bottom:15px')
             hr.article-hr
             if user
@@ -384,7 +384,7 @@ block content
                 article.row
                   .col-md-2.col-sm-2.hidden-xs
                     figure.thumbnail-left
-                      img.img-responsive(src='/images/h1.jpg')
+                      img.img-responsive(src='/uploads/heads/#{user.head}')
                       //- figcaption.text-center #{comment.from.name}
                   .col-md-10.col-sm-10
                     .panel.panel-default.arrow.left
